@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html th:replace="base :: html" xmlns:th="http://www.thymeleaf.org">
+
+<div th:fragment="content">
+
+    <h1 class="page-title">Connexion</h1>
+
+    <form method="post" class="form-auth">
+        <input type="email" placeholder="Email" required>
+        <input type="password" placeholder="Mot de passe" required>
+        <button class="btn-primary">Se connecter</button>
+    </form>
+
+    <p>Pas encore inscrit ?
+        <a th:href="@{/register}">Créer un compte</a>
+    </p>
+
+</div>
+
+</html>
+

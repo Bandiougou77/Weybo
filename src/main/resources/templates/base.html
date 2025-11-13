@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org" th:fragment="html">
+<head>
+    <meta charset="UTF-8">
+    <title>WEYBO</title>
+
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+
+<body>
+
+<!-- HEADER GLOBAL -->
+<header th:replace="fragments :: header"></header>
+
+<main>
+    <!-- Contenu spécifique -->
+    <div th:replace=":: content"></div>
+</main>
+
+<!-- FOOTER GLOBAL -->
+<footer th:replace="fragments :: footer"></footer>
+
+</body>
+</html>
+
+

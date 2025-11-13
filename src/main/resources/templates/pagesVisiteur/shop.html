@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html th:replace="base :: html" xmlns:th="http://www.thymeleaf.org">
+
+<div th:fragment="content">
+
+    <h1 class="page-title">Notre Collection</h1>
+
+    <section class="products-section">
+        <div class="products-grid">
+
+            <div class="product-card" th:each="i : ${#numbers.sequence(1,6)}">
+                <img th:src="@{'/images/bag' + ${i} + '.jpg'}" alt="Modèle de sac">
+                <h3 th:text="'Sac Modèle ' + ${i}"></h3>
+                <p class="price" th:text="${(i*10+59) + ' €'}"></p>
+                <button class="btn-add">Ajouter au panier</button>
+            </div>
+
+        </div>
+    </section>
+
+</div>
+
+</html>
+
+
