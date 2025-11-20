@@ -36,7 +36,7 @@ a {
     NAVBAR
 ============================= */
 .navbar {
-    width: 100%;
+
     padding: 15px 30px;
     background: #d2b28a;
     display: flex;
@@ -308,5 +308,57 @@ main{
 }
 .btn-order:hover {
     background-color: #a67d50;
+}
+
+/* Supprime les bordures fantômes sur les côtés */
+html, body {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    overflow-x: hidden;  /* IMPORTANT */
+}
+
+/* Empêche le body de dépasser l’écran */
+body {
+    width: 100%;
+    max-width: 100%;
+}
+
+.page-title {
+    text-align: center;
+    margin-top: 30px;
+    color: #6b4f2a;
+    font-size: 32px;
+    font-weight: bold;
+}
+
+.admin-cards-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 40px;
+    flex-wrap: wrap;
+}
+
+.admin-card {
+    width: 260px;
+    padding: 30px;
+    background: white;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    text-decoration: none;
+    color: #6b4f2a;
+    transition: 0.2s;
+    border: 2px solid #d8c1a4;
+}
+
+.admin-card:hover {
+    transform: translateY(-5px);
+    background: #fdf5e6;
+}
+
+.admin-card.secondary {
+    background: #eee;
 }
 

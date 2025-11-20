@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html th:replace="base :: html" xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="content">
+
+    <h1 class="page-title">Gestion des articles</h1>
+
+    <a class="btn-primary" th:href="@{/admin/articles/create}">+ Nouvel article</a>
+
+    <table class="admin-table">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nom</th>
+            <th>Catégorie</th>
+            <th>Prix</th>
+            <th>Stock</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="article : ${articles}">
+            <td th:text="${article.id}"></td>
+            <td th:text="${article.nom}"></td>
+            <td th:text="${article.categorie != null ? article.categorie.nom : '–'}"></td>
+            <td th:text="${article.prix} + ' €'"></td>
+            <td th:text="${article.stock}"></td>
+            <td>
+                <a th:href="@{'/admin/articles/edit/' + ${article.id}}">✏️ Modifier</a>
+                |
+                <a th:href="@{'/admin/articles/delete/' + ${article.id}}"
+                   onclick="return confirm('Supprimer cet article ?');">
+                    🗑 Supprimer
+                </a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+</html>

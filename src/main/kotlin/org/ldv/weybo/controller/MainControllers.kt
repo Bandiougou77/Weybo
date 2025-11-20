@@ -1,27 +1,69 @@
 package org.ldv.weybo.controller
 
+import org.springframework.security.core.Authentication
 import org.springframework.stereotype.Controller
+import org.springframework.ui.Model
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestMapping
+import org.springframework.web.bind.annotation.RequestParam
 
-@RequestMapping("/Weybo")
 @Controller
-class MainController {
+@RequestMapping("/weybo")
+open class MainController {
 
-    @GetMapping("/","/home")
-    fun home() = "pagesVisiteur/index"
+    // --- PAGES VISITEUR --- //
+
+    @GetMapping("/home")
+    open fun home() : String {
+        return "pagesVisiteur/index"
+    }
 
     @GetMapping("/shop")
-    fun shop() = "pagesVisiteur/shop"
+    open fun shop() : String {
+        return "pagesVisiteur/shop"
+    }
 
     @GetMapping("/cart")
-    fun cart() = "pagesVisiteur/cart"
-
-    @GetMapping("/login")
-    fun login() = "pagesVisiteur/login"
+    open fun cart() : String {
+        return "pagesVisiteur/cart"
+    }
 
     @GetMapping("/register")
-    fun register() = "pagesVisiteur/register"
+    open fun register() : String {
+        return "pagesVisiteur/register"
+    }
+
+
+    // --- PAGE LOGIN GÉRÉE PAR SPRING SECURITY --- //
+
+    @GetMapping("/login")
+    open fun login(
+        @RequestParam(name = "error", required = false) error: Boolean?,
+        model: Model
+    ) : String {
+
+        if (error == true) {
+            model.addAttribute("error", "Identifiants incorrects.")
+        }
+
+        return "pagesVisiteur/login"
+    }
+
+
+    // --- REDIRECTION APRÈS LOGIN --- //
+
+    @GetMapping("/profil")
+    open fun profil(authentication: Authentication) : String {
+
+        val roles = authentication.authorities.map { it.authority }
+
+        return if ("ROLE_ADMIN" in roles) {
+            "redirect:/admin/dashboard"
+        } else {
+            "pagesClient/profile"
+        }
+    }
 }
+
 
 

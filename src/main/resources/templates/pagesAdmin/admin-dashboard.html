@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html th:replace="base :: html" xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="content">
+
+    <h1 class="page-title">Tableau de Bord Admin</h1>
+
+    <div class="admin-cards-container">
+
+        <a href="/admin/articles" class="admin-card">
+            <h2>📦 Articles</h2>
+            <p>Gérer les articles</p>
+        </a>
+
+        <a href="/admin/categories" class="admin-card">
+            <h2>🏷️ Catégories</h2>
+            <p>Gérer les catégories</p>
+        </a>
+
+        <a href="/" class="admin-card secondary">
+            <h2>⬅️ Retour au site</h2>
+        </a>
+    </div>
+
+</div>
+</html>
+

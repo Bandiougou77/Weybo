@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html th:replace="base :: html" xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="content">
+
+    <h1 class="page-title" th:text="${categorie.id} != null ? 'Modifier une catégorie' : 'Créer une catégorie'"></h1>
+
+    <form th:action="@{/admin/categories/save}" method="post">
+
+        <input type="hidden" name="id" th:value="${categorie.id}" />
+
+        <label>Nom</label>
+        <input type="text" name="nom" th:value="${categorie.nom}" required />
+
+        <label>Description</label>
+        <textarea name="description" rows="4" th:text="${categorie.description}"></textarea>
+
+        <button type="submit" class="btn-primary">Enregistrer</button>
+        <a th:href="@{/admin/categories}" class="btn-secondary">Annuler</a>
+    </form>
+
+</div>
+</html>
+

@@ -1,0 +1,166 @@
+/* === STRUCTURE === */
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: #f5f5f7;
+}
+
+.admin-wrapper {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* === SIDEBAR === */
+
+.sidebar {
+    width: 240px;
+    background: #1e1f24;
+    padding: 20px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar-title {
+    margin: 0 0 20px;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.sidebar-link {
+    color: #d4d4d8;
+    text-decoration: none;
+    padding: 12px;
+    display: block;
+    border-radius: 6px;
+    margin-bottom: 10px;
+    font-size: 16px;
+    transition: 0.2s;
+}
+
+.sidebar-link:hover {
+    background: #34353a;
+    color: white;
+}
+
+.return-site {
+    margin-top: 30px;
+    background: #5f5fff20;
+}
+
+/* === CONTENT AREA === */
+
+.admin-content {
+    flex: 1;
+    padding: 40px;
+}
+
+/* === TITRES === */
+
+h1 {
+    font-size: 28px;
+    margin-bottom: 25px;
+    color: #333;
+}
+
+/* === TABLE === */
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+}
+
+.table thead {
+    background: #f2f2f7;
+}
+
+.table th,
+.table td {
+    padding: 15px;
+    border-bottom: 1px solid #eee;
+}
+
+.table th {
+    text-align: left;
+    font-weight: bold;
+}
+
+.table tbody tr:hover {
+    background: #fafafa;
+}
+
+/* === BUTTONS === */
+
+.btn {
+    display: inline-block;
+    padding: 10px 18px;
+    border-radius: 8px;
+    background: #10b981;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    margin-bottom: 20px;
+    transition: 0.2s;
+}
+
+.btn:hover {
+    background: #0d946b;
+}
+
+.btn-edit {
+    padding: 6px 12px;
+    background: #3b82f6;
+    color: white;
+    border-radius: 6px;
+    text-decoration: none;
+}
+
+.btn-edit:hover {
+    background: #2563eb;
+}
+
+.btn-delete {
+    padding: 6px 12px;
+    background: #ef4444;
+    color: white;
+    border-radius: 6px;
+    text-decoration: none;
+}
+
+.btn-delete:hover {
+    background: #dc2626;
+}
+
+/* === FORM === */
+
+form {
+    background: white;
+    padding: 30px;
+    max-width: 600px;
+    border-radius: 12px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+}
+
+label {
+    display: block;
+    margin: 15px 0 5px;
+    font-weight: 600;
+}
+
+input, textarea, select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    font-size: 16px;
+}
+
+textarea {
+    min-height: 120px;
+}
