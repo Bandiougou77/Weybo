@@ -164,3 +164,21 @@ input, textarea, select {
 textarea {
     min-height: 120px;
 }
+
+table {
+    width: 60%;
+    border-collapse: collapse;
+}
+
+table, td, th {
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+
+.btn {
+    padding: 8px 12px;
+    background: peru;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}

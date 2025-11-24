@@ -1,40 +1,43 @@
 <!DOCTYPE html>
 <html th:replace="base :: html" xmlns:th="http://www.thymeleaf.org">
+
 <div th:fragment="content">
 
     <h1 class="page-title">Gestion des articles</h1>
 
-    <a class="btn-primary" th:href="@{/admin/articles/create}">+ Nouvel article</a>
+    <div class="admin-toolbar">
+        <a class="btn" th:href="@{/admin/articles/new}">+ Nouvel article</a>
+        <a class="btn-secondary" th:href="@{/admin/dashboard}">← Retour dashboard</a>
+    </div>
 
     <table class="admin-table">
         <thead>
         <tr>
             <th>ID</th>
             <th>Nom</th>
-            <th>Catégorie</th>
             <th>Prix</th>
             <th>Stock</th>
+            <th>Catégorie</th>
             <th>Actions</th>
         </tr>
         </thead>
         <tbody>
-        <tr th:each="article : ${articles}">
-            <td th:text="${article.id}"></td>
-            <td th:text="${article.nom}"></td>
-            <td th:text="${article.categorie != null ? article.categorie.nom : '–'}"></td>
-            <td th:text="${article.prix} + ' €'"></td>
-            <td th:text="${article.stock}"></td>
-            <td>
-                <a th:href="@{'/admin/articles/edit/' + ${article.id}}">✏️ Modifier</a>
-                |
-                <a th:href="@{'/admin/articles/delete/' + ${article.id}}"
-                   onclick="return confirm('Supprimer cet article ?');">
-                    🗑 Supprimer
-                </a>
+        <tr th:each="a : ${articles}">
+            <td th:text="${a.id}"></td>
+            <td th:text="${a.nom}"></td>
+            <td th:text="${a.prix} + ' €'"></td>
+            <td th:text="${a.stock}"></td>
+            <td th:text="${a.categorie != null ? a.categorie.nom : '—'}"></td>
+            <td class="actions">
+                <a th:href="@{'/admin/articles/edit/' + ${a.id}}" class="link-edit">Modifier</a>
+                <a th:href="@{'/admin/articles/delete/' + ${a.id}}"
+                   onclick="return confirm('Supprimer cet article ?');"
+                   class="link-delete">Supprimer</a>
             </td>
         </tr>
         </tbody>
     </table>
 
 </div>
+
 </html>

@@ -1,31 +1,30 @@
 <!DOCTYPE html>
-<html th:replace="base :: html" xmlns:th="http://www.thymeleaf.org">
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Connexion</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
 
-<div th:fragment="content">
+<h2>Connexion</h2>
 
-    <h1 class="page-title">Connexion</h1>
-
-    <form action="/login" method="post" class="login-box">
-
-        <h2>Connexion</h2>
-
-        <p th:if="${error}" class="error">Identifiants incorrects</p>
-
-        <label>Email</label>
-        <input type="text" name="username" required>
-
-        <label>Mot de passe</label>
-        <input type="password" name="password" required>
-
-        <button>Se connecter</button>
-
-    </form>
-
-    <p>Pas encore inscrit ?
-        <a th:href="@{/register}">Créer un compte</a>
-    </p>
-
+<div th:if="${error}">
+    <p style="color: red;">Identifiants incorrects</p>
 </div>
 
+<form action="/login" method="post">
+    <label>Email</label>
+    <input type="email" name="username" required>
+
+    <label>Mot de passe</label>
+    <input type="password" name="password" required>
+
+    <button type="submit">Se connecter</button>
+</form>
+
+</body>
 </html>
+
+
 

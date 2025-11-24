@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Mon Profil</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <style>
+        .profile-container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 30px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        .profile-header {
+            text-align: center;
+        }
+
+        .profile-header img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 3px solid #d4a373;
+            object-fit: cover;
+            margin-bottom: 10px;
+        }
+
+        .profile-section {
+            margin-top: 30px;
+        }
+
+        .profile-section h3 {
+            border-left: 4px solid #d4a373;
+            padding-left: 10px;
+            margin-bottom: 15px;
+        }
+
+        .cart-items {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .cart-item {
+            display: flex;
+            align-items: center;
+            background: #fafafa;
+            padding: 15px;
+            border-radius: 10px;
+            border: 1px solid #eee;
+        }
+
+        .cart-item img {
+            width: 80px;
+            height: 80px;
+            border-radius: 10px;
+            margin-right: 15px;
+            object-fit: cover;
+        }
+
+        .logout-btn, .visitor-btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 25px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+
+        .logout-btn {
+            background: #c0392b;
+            color: white;
+        }
+
+        .logout-btn:hover {
+            background: #e74c3c;
+        }
+
+        .visitor-btn {
+            background: #3498db;
+            color: white;
+            margin-right: 10px;
+        }
+
+        .visitor-btn:hover {
+            background: #2980b9;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="profile-container">
+
+    <!-- BOUTON RETOUR SITE VISITEUR -->
+    <a href="/home" class="visitor-btn">Retour au site (pages visiteur)</a>
+
+    <!-- PHOTO + NOM -->
+    <div class="profile-header">
+        <img src="/images/user.jpg" alt="Photo de profil">
+        <h2 th:text="'Bonjour ' + ${#authentication.name} + ' !'">Bonjour Client</h2>
+    </div>
+
+    <!-- INFOS PERSONNELLES -->
+    <div class="profile-section">
+        <h3>Mes informations</h3>
+
+        <p><strong>Email :</strong> <span th:text="${#authentication.name}">email@test.com</span></p>
+        <p><strong>Rôle :</strong>
+            <span th:text="${#authentication.authorities[0].authority}">CLIENT</span>
+        </p>
+    </div>
+
+    <!-- PANIER DU CLIENT -->
+    <div class="profile-section">
+        <h3>Mon panier</h3>
+
+        <div class="cart-items">
+
+            <!-- Exemple d’article -->
+            <div class="cart-item">
+                <img src="/images/bag1.jpg">
+                <div>
+                    <strong>Sac Élégant</strong><br>
+                    Prix : 89€<br>
+                    Quantité : 1
+                </div>
+            </div>
+
+            <div class="cart-item">
+                <img src="/images/bag2.jpg">
+                <div>
+                    <strong>Sac Moderne</strong><br>
+                    Prix : 99€<br>
+                    Quantité : 2
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- BOUTON DECONNEXION -->
+    <a href="/logout" class="logout-btn">Se déconnecter</a>
+
+</div>
+
+</body>
+</html>
+
+
+

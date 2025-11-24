@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html th:replace="base :: html" xmlns:th="http://www.thymeleaf.org">
+
+<div th:fragment="content">
+
+    <h1 class="page-title"
+        th:text="${categorie.id == null} ? 'Nouvelle catégorie' : 'Modifier la catégorie'"></h1>
+
+    <section class="admin-form-wrapper">
+
+        <form th:action="@{/admin/categories/save}" method="post"
+              th:object="${categorie}" class="admin-form">
+
+            <input type="hidden" th:field="*{id}"/>
+
+            <div class="form-group">
+                <label>Nom</label>
+                <input type="text" th:field="*{nom}" required/>
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="btn">Enregistrer</button>
+                <a th:href="@{/admin/categories}" class="btn-secondary">Annuler</a>
+            </div>
+
+        </form>
+
+    </section>
+
+</div>
+
+</html>
+

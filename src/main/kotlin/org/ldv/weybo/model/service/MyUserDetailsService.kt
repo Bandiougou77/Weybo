@@ -19,11 +19,13 @@ class MyUserDetailsService(
 
         val role = user.role?.nom ?: "CLIENT"
 
-        return User.withUsername(user.email)
+        return User
+            .withUsername(user.email)
             .password(user.motDePasse)
             .roles(role)
             .build()
     }
 }
+
 
 

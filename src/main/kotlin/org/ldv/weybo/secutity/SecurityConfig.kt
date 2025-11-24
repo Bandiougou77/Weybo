@@ -3,50 +3,56 @@ package org.ldv.weybo.secutity
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.security.authentication.AuthenticationManager
+import org.springframework.security.authentication.dao.DaoAuthenticationProvider
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration
-import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
-import org.springframework.security.crypto.password.PasswordEncoder
 import org.springframework.security.web.SecurityFilterChain
+import org.springframework.security.core.userdetails.UserDetailsService
 
 @Configuration
-@EnableMethodSecurity
-class SecurityConfig {
+class SecurityConfig(
+    private val myUserDetailsService: UserDetailsService
+) {
 
     @Bean
-    fun passwordEncoder(): PasswordEncoder = BCryptPasswordEncoder()
+    fun passwordEncoder() = BCryptPasswordEncoder()
+
 
     @Bean
-    fun filterChain(http: HttpSecurity): SecurityFilterChain {
+    fun authenticationManager(config: AuthenticationConfiguration):
+            AuthenticationManager {
+        return config.authenticationManager
+    }
 
-        http.csrf { it.disable() }
+    @Bean
+    fun securityFilterChain(http: HttpSecurity): SecurityFilterChain {
 
+        http
+            .csrf { it.disable() }
             .authorizeHttpRequests {
-                it.requestMatchers("/", "/accueil", "/css/**", "/images/**", "/js/**").permitAll()
-                it.requestMatchers("/admin/**").hasRole("ADMIN")
-                it.requestMatchers("/client/**").hasRole("CLIENT")
+                it.requestMatchers("/", "/home", "/shop", "/cart", "/register", "/login", "/css/**", "/images/**")
+                    .permitAll()
+
+                it.requestMatchers("/admin/**")
+                    .hasRole("ADMIN")
+
                 it.anyRequest().authenticated()
             }
-
             .formLogin {
                 it.loginPage("/login")
-                    .defaultSuccessUrl("/profil")
-                    .failureUrl("/login?error=true")
-                    .permitAll()
+                it.defaultSuccessUrl("/profil", true)
+                it.failureUrl("/login?error=true")
+                it.permitAll()
             }
-
             .logout {
                 it.logoutUrl("/logout")
-                    .permitAll()
+                it.logoutSuccessUrl("/login")
             }
+            .csrf { it.disable() }
 
         return http.build()
     }
-
-    @Bean
-    fun authenticationManager(config: AuthenticationConfiguration): AuthenticationManager {
-        return config.authenticationManager
-    }
 }
+
 
