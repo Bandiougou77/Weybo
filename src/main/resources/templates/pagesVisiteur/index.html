@@ -5,45 +5,74 @@
 
     <!-- HERO -->
     <section class="hero">
-        <div class="hero-content">
-            <h1>Sacs à main élégants et intemporels</h1>
-            <p>Découvrez nos nouvelles collections automne-hiver</p>
-            <a th:href="@{/Weybo/shop}" class="btn-primary">Voir la boutique</a>
+        <div class="hero-inner">
+            <div class="hero-text">
+                <p class="hero-tagline">Sacs bleu</p>
+                <h1>Des sacs à main élégants &amp; intemporels</h1>
+                <p class="hero-subtitle">
+                    Découvrez nos nouvelles collections automne-hiver
+                </p>
+                <a th:href="@{/shop}" class="btn-primary">Voir la boutique</a>
+            </div>
         </div>
     </section>
 
-    <!-- BEST SELLERS -->
+    <!-- CATÉGORIES MISE EN AVANT -->
+    <section class="category-strip">
+        <div class="category-card category-bandouliere">
+            <div class="category-overlay">
+                <span class="category-title">Bandoulière</span>
+                <a th:href="@{/shop}" class="btn-ghost">Voir plus</a>
+            </div>
+        </div>
+
+        <div class="category-card category-epaule">
+            <div class="category-overlay">
+                <span class="category-title">Porté-épaule</span>
+                <a th:href="@{/shop}" class="btn-ghost">Voir plus</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- MEILLEURES VENTES -->
     <section class="products-section">
-        <h2>Nos Meilleures Ventes</h2>
+        <h2 class="section-title">Nos Meilleures Ventes</h2>
 
         <div class="products-grid">
+            <!-- Produit 1 -->
+            <article class="product-card">
+                <div class="product-image">
+                    <img th:src="@{/images/bag1.jpg}" alt="Sac Chic">
+                </div>
+                <h3 class="product-name">Sac Chic</h3>
+                <p class="product-price">89 €</p>
+                <button type="button" class="btn-secondary">Ajouter au panier</button>
+            </article>
 
-            <div class="product-card">
-                <img th:src="@{/images/bag1.jpg}" alt="Sac Chic">
-                <h3>Sac Chic</h3>
-                <p class="price">89 €</p>
-                <button class="btn-add">Ajouter au panier</button>
-            </div>
+            <!-- Produit 2 -->
+            <article class="product-card">
+                <div class="product-image">
+                    <img th:src="@{/images/bag2.jpg}" alt="Sac Moderne">
+                </div>
+                <h3 class="product-name">Sac Moderne</h3>
+                <p class="product-price">99 €</p>
+                <button type="button" class="btn-secondary">Ajouter au panier</button>
+            </article>
 
-            <div class="product-card">
-                <img th:src="@{/images/bag2.jpg}" alt="Moderne">
-                <h3>Sac Moderne</h3>
-                <p class="price">99 €</p>
-                <button class="btn-add">Ajouter au panier</button>
-            </div>
-
-            <div class="product-card">
-                <img th:src="@{/images/bag3.jpg}" alt="Doré">
-                <h3>Sac Doré</h3>
-                <p class="price">129 €</p>
-                <button class="btn-add">Ajouter au panier</button>
-            </div>
-
+            <!-- Produit 3 -->
+            <article class="product-card">
+                <div class="product-image">
+                    <img th:src="@{/images/bag3.jpg}" alt="Sac Doré">
+                </div>
+                <h3 class="product-name">Sac Doré</h3>
+                <p class="product-price">129 €</p>
+                <button type="button" class="btn-secondary">Ajouter au panier</button>
+            </article>
         </div>
     </section>
 
 </div>
-
 </html>
+
 
 

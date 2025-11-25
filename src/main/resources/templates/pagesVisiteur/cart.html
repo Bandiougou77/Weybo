@@ -1,20 +1,55 @@
 <!DOCTYPE html>
-<html lang="fr" th:replace="base :: html">
+<html th:replace="base :: html" xmlns:th="http://www.thymeleaf.org">
 
 <div th:fragment="content">
 
-    <section class="cart-container">
+    <section class="page-hero-small">
+        <div class="page-hero-inner">
+            <h1>Votre Panier</h1>
+            <p th:if="${cart == null or #lists.isEmpty(cart)}">
+                Vous n'avez encore ajouté aucun article.
+            </p>
+            <p th:if="${cart != null and !#lists.isEmpty(cart)}">
+                Récapitulatif de vos articles avant validation.
+            </p>
+        </div>
+    </section>
 
-        <h1 class="cart-title">Votre Panier</h1>
+    <section class="cart-section">
+        <div class="cart-card">
 
-        <p class="cart-empty">Votre panier est vide pour le moment.</p>
+            <!-- PANIER VIDE -->
+            <div th:if="${cart == null or #lists.isEmpty(cart)}" class="cart-empty">
+                <p>Votre panier est actuellement vide.</p>
+                <a th:href="@{/shop}" class="btn-primary">Retour à la boutique</a>
+            </div>
 
-        <p class="cart-total">Total : <strong>0 €</strong></p>
+            <!-- PANIER AVEC ARTICLES -->
+            <div th:if="${cart != null and !#lists.isEmpty(cart)}">
+                <ul class="cart-items">
+                    <li th:each="item : ${cart}" class="cart-item">
+                        <div class="cart-item-info">
+                            <span class="cart-item-name" th:text="${item.name}">Nom du sac</span>
+                        </div>
+                        <span class="cart-item-price" th:text="${item.price} + ' €'">99 €</span>
+                    </li>
+                </ul>
 
-        <a href="#" class="btn-order">Passer la commande</a>
+                <div class="cart-total">
+                    <span>Total</span>
+                    <strong th:text="${total} + ' €'">0 €</strong>
+                </div>
 
+                <div class="cart-actions">
+                    <button type="button" class="btn-primary">Passer la commande</button>
+                    <a th:href="@{/shop}" class="btn-ghost">Continuer les achats</a>
+                </div>
+            </div>
+
+        </div>
     </section>
 
 </div>
-
 </html>
+
+
